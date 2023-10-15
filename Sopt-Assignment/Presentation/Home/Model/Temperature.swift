@@ -33,7 +33,7 @@ extension Temperature {
                             minimumTemperature: 9),
                 Temperature(city: "Tokyo",
                             time: "11:59PM",
-                            weather: "Wwarmer on Monday, with a high of 25º",
+                            weather: "Cloudy",
                             temperature: 18,
                             maximumTemperature: 23,
                             minimumTemperature: 12)]
