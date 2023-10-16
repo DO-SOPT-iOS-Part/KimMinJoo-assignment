@@ -13,6 +13,7 @@
 		098097552ADC3ADD00007587 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 098097502ADC3ADD00007587 /* SF-Pro-Display-Regular.otf */; };
 		098097562ADC3ADD00007587 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 098097512ADC3ADD00007587 /* SF-Pro-Display-Thin.otf */; };
 		0980975A2ADD70C600007587 /* HourlyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098097592ADD70C600007587 /* HourlyWeather.swift */; };
+		0980975D2ADD72DD00007587 /* CityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980975C2ADD72DD00007587 /* CityDetailViewModel.swift */; };
 		0994C7112ADACC7D0058A27B /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994C7102ADACC7D0058A27B /* FontLiterals.swift */; };
 		0994C7142ADACC960058A27B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994C7132ADACC960058A27B /* Protocol.swift */; };
 		0994C7172ADACCAA0058A27B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994C7162ADACCAA0058A27B /* Extension.swift */; };
@@ -45,6 +46,7 @@
 		098097502ADC3ADD00007587 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		098097512ADC3ADD00007587 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		098097592ADD70C600007587 /* HourlyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeather.swift; sourceTree = "<group>"; };
+		0980975C2ADD72DD00007587 /* CityDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailViewModel.swift; sourceTree = "<group>"; };
 		0994C7102ADACC7D0058A27B /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		0994C7132ADACC960058A27B /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		0994C7162ADACCAA0058A27B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				098097582ADD6F1500007587 /* Models */,
+				0980975B2ADD72CB00007587 /* ViewModels */,
 			);
 			path = CityDetailView;
 			sourceTree = "<group>";
@@ -98,6 +101,14 @@
 				098097592ADD70C600007587 /* HourlyWeather.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0980975B2ADD72CB00007587 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0980975C2ADD72DD00007587 /* CityDetailViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		0994C7082ADAC83F0058A27B /* Application */ = {
@@ -352,6 +363,7 @@
 				0994C73E2ADC18C00058A27B /* ImageLiterals.swift in Sources */,
 				0994C73C2ADC053B0058A27B /* UIStackView+.swift in Sources */,
 				0994C7322ADAE6810058A27B /* HomeViewController.swift in Sources */,
+				0980975D2ADD72DD00007587 /* CityDetailViewModel.swift in Sources */,
 				0994C7172ADACCAA0058A27B /* Extension.swift in Sources */,
 				0994C7382ADBF2F70058A27B /* HomeView.swift in Sources */,
 				0994C73A2ADBF4C60058A27B /* UIView+.swift in Sources */,

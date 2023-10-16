@@ -5,7 +5,6 @@
 //  Created by Minjoo Kim on 10/16/23.
 //
 
-import Foundation
 import UIKit
 
 struct HourlyWeather {
@@ -30,4 +29,3 @@ extension HourlyWeather {
                 HourlyWeather(time: "10AM", wheather: ImageLiterals.Home.cloudBolt, temperature: 11)]
     }
 }
-
