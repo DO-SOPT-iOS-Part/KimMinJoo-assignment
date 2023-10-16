@@ -9,10 +9,9 @@ import UIKit
 
 import RxCocoa
 import RxSwift
-import SnapKit
 import Then
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     
     private let viewModel = HomeViewModel()
     private let disposeBag = DisposeBag()
@@ -27,21 +26,21 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         setTapGesture()
         bindViewModel()
-        setStyle()
-        setLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigation()
     }
+    
+    override func loadView() {
+        self.view = homeView
+    }
 }
 
 extension HomeViewController {
     func setNavigation() {
         let searchController = UISearchController(searchResultsController: nil)
-        
-        
         
         searchController.do {
             $0.searchBar.tintColor = .white
@@ -70,20 +69,20 @@ extension HomeViewController {
     
     private func bindViewModel() {
         tapGesture1.rx.event
-            .bind {_ in
-                self.pushToCityDetailView()
+            .bind { text in
+                self.pushToCityDetailView(index: 0)
             }
             .disposed(by: disposeBag)
         
         tapGesture2.rx.event
             .bind {_ in
-                self.pushToCityDetailView()
+                self.pushToCityDetailView(index: 1)
             }
             .disposed(by: disposeBag)
         
         tapGesture3.rx.event
             .bind {_ in
-                self.pushToCityDetailView()
+                self.pushToCityDetailView(index: 2)
             }
             .disposed(by: disposeBag)
         
@@ -96,22 +95,16 @@ extension HomeViewController {
             .disposed(by: disposeBag)
     }
     
-    private func setStyle() { }
-    
-    private func setLayout() {
-        view.addSubview(homeView)
-        homeView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
-    }
-    
     private func setTapGesture() {
         homeView.homeCityView1.addGestureRecognizer(self.tapGesture1)
         homeView.homeCityView2.addGestureRecognizer(self.tapGesture2)
         homeView.homeCityView3.addGestureRecognizer(self.tapGesture3)
     }
     
-    private func pushToCityDetailView() {
-        print("헤헤")
+    private func pushToCityDetailView(index: Int) {
+        print(index)
+        let cityDetailViewController = CityDetailViewController()
+        cityDetailViewController.setIndex(index: index)
+        self.navigationController?.pushViewController(cityDetailViewController, animated: true)
     }
 }

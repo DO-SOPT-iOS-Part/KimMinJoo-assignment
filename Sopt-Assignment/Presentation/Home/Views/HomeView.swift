@@ -8,13 +8,13 @@
 import UIKit
 
 import SnapKit
+import Then
 
-class HomeView: UIView {
+final class HomeView: UIView {
     private let homeScrollView = UIScrollView()
     let homeCityView1 = HomeCityView()
     let homeCityView2 = HomeCityView()
     let homeCityView3 = HomeCityView()
-    
     private lazy var homeStackView = UIStackView.init(arrangedSubviews: [self.homeCityView1, self.homeCityView2, self.homeCityView3])
     
     override init(frame: CGRect) {

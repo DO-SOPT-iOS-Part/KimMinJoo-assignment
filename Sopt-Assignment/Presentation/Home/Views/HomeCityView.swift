@@ -8,9 +8,9 @@
 import UIKit
 
 import SnapKit
+import Then
 
-class HomeCityView: UIView {
-    
+final class HomeCityView: UIView {
     private let imageView = UIImageView()
     private let locationLabel = UILabel()
     private let timeLabel = UILabel()
@@ -30,7 +30,6 @@ class HomeCityView: UIView {
 }
 
 extension HomeCityView {
-    
     private func setStyle() {
         
         self.layer.cornerRadius = 16
@@ -63,8 +62,8 @@ extension HomeCityView {
             $0.font = .medium(size: 15)
             $0.textColor = .white
         }
-        
     }
+    
     private func setLayout() {
         self.addSubviews(imageView, locationLabel, timeLabel, weatherLabel, temperatureLabel, maxMinLabel)
         
@@ -82,6 +81,7 @@ extension HomeCityView {
             $0.leading.equalTo(locationLabel.snp.leading)
             
         }
+        
         weatherLabel.snp.makeConstraints {
             $0.top.equalTo(timeLabel.snp.bottom).offset(28)
             $0.leading.equalTo(locationLabel.snp.leading)
