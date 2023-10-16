@@ -14,11 +14,18 @@ import Then
 
 class HomeViewController: UIViewController {
     
+    private let viewModel = HomeViewModel()
+    private let disposeBag = DisposeBag()
+    
     private let homeView = HomeView()
+    
+    private let tapGesture1 = UITapGestureRecognizer()
+    private let tapGesture2 = UITapGestureRecognizer()
+    private let tapGesture3 = UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("@@@@@@")
+        setTapGesture()
         bindViewModel()
         setStyle()
         setLayout()
@@ -40,7 +47,7 @@ extension HomeViewController {
             $0.searchBar.tintColor = .white
             $0.searchBar.searchTextField.backgroundColor = .gray28
             $0.searchBar.searchTextField.leftView?.tintColor = .gray152
-            $0.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search for a city or airport", attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 152/255, green: 152/255, blue: 160/255, alpha: 1)])
+            $0.searchBar.searchTextField.attributedPlaceholder = NSAttributedString(string: "Search for a city or airport", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray152])
             if let button = $0.searchBar.searchTextField.value(forKey: "_clearButton") as? UIButton {
                 let templateImage = button.imageView?.image?.withRenderingMode(.alwaysTemplate)
                 button.setImage(templateImage, for: .normal)
@@ -61,14 +68,50 @@ extension HomeViewController {
         self.navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
-    private func bindViewModel() { }
+    private func bindViewModel() {
+        tapGesture1.rx.event
+            .bind {_ in
+                self.pushToCityDetailView()
+            }
+            .disposed(by: disposeBag)
+        
+        tapGesture2.rx.event
+            .bind {_ in
+                self.pushToCityDetailView()
+            }
+            .disposed(by: disposeBag)
+        
+        tapGesture3.rx.event
+            .bind {_ in
+                self.pushToCityDetailView()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.cityTemperature
+            .asDriver()
+            .drive { [weak self] temperature in
+                guard let self else { return }
+                self.homeView.setHomeCityView(temperatures: temperature)
+            }
+            .disposed(by: disposeBag)
+    }
     
     private func setStyle() { }
     
-    private func setLayout() { 
+    private func setLayout() {
         view.addSubview(homeView)
         homeView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    private func setTapGesture() {
+        homeView.homeCityView1.addGestureRecognizer(self.tapGesture1)
+        homeView.homeCityView2.addGestureRecognizer(self.tapGesture2)
+        homeView.homeCityView3.addGestureRecognizer(self.tapGesture3)
+    }
+    
+    private func pushToCityDetailView() {
+        print("헤헤")
     }
 }

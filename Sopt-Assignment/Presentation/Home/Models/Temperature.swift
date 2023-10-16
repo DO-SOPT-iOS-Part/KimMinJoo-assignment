@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct Temperature {
     let city: String
     let time: String

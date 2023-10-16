@@ -10,12 +10,10 @@ import UIKit
 import SnapKit
 
 class HomeView: UIView {
-    
     private let homeScrollView = UIScrollView()
-    
-    private let homeCityView1 = HomeCityView()
-    private let homeCityView2 = HomeCityView()
-    private let homeCityView3 = HomeCityView()
+    let homeCityView1 = HomeCityView()
+    let homeCityView2 = HomeCityView()
+    let homeCityView3 = HomeCityView()
     
     private lazy var homeStackView = UIStackView.init(arrangedSubviews: [self.homeCityView1, self.homeCityView2, self.homeCityView3])
     
@@ -35,7 +33,6 @@ class HomeView: UIView {
 extension HomeView {
     private func setStyle() {
         homeScrollView.do {
-            
             $0.contentInsetAdjustmentBehavior = .never
             $0.isScrollEnabled = true
         }
@@ -45,7 +42,6 @@ extension HomeView {
             $0.distribution = .fillEqually
             $0.spacing = 16
         }
-        
     }
     
     private func setLayout() {
@@ -75,5 +71,13 @@ extension HomeView {
             $0.height.equalTo(117)
         }
         
+    }
+}
+
+extension HomeView {
+    func setHomeCityView(temperatures: [Temperature]) {
+        homeCityView1.setLabels(temperature: temperatures[0])
+        homeCityView2.setLabels(temperature: temperatures[1])
+        homeCityView3.setLabels(temperature: temperatures[2])
     }
 }

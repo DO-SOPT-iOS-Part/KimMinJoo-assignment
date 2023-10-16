@@ -42,31 +42,26 @@ extension HomeCityView {
         locationLabel.do {
             $0.font = .bold(size: 25)
             $0.textColor = .white
-            $0.text = "My Location"
         }
         
         timeLabel.do {
             $0.font = .medium(size: 16)
             $0.textColor = .white
-            $0.text = "서울특별시"
         }
         
         weatherLabel.do {
             $0.font = .medium(size: 16)
             $0.textColor = .white
-            $0.text = "Clear"
         }
         
         temperatureLabel.do {
             $0.font = .light(size: 53)
             $0.textColor = .white
-            $0.text = "17º"
         }
         
         maxMinLabel.do {
             $0.font = .medium(size: 15)
             $0.textColor = .white
-            $0.text = "H: 20º L: 10º"
         }
         
     }
@@ -94,13 +89,22 @@ extension HomeCityView {
         
         temperatureLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(4)
-            $0.width.equalTo(82)
-            $0.trailing.equalToSuperview().inset(13)
+            $0.trailing.equalToSuperview().inset(15)
         }
         
         maxMinLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(11)
             $0.trailing.equalToSuperview().inset(19)
         }
+    }
+}
+
+extension HomeCityView {
+    func setLabels(temperature: Temperature) {
+        locationLabel.text = temperature.city
+        timeLabel.text = temperature.time
+        weatherLabel.text = temperature.weather
+        temperatureLabel.text = "\(temperature.temperature)º"
+        maxMinLabel.text = "H: \(temperature.maximumTemperature)º  L: \(temperature.minimumTemperature)º"
     }
 }

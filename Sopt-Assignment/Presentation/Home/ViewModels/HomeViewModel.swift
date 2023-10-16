@@ -11,7 +11,7 @@ import RxCocoa
 import RxSwift
 
 protocol HomeViewModelOutputs {
-    var cityTemperature: BehaviorRelay<Temperature> { get }
+    var cityTemperature: BehaviorRelay<[Temperature]> { get }
 }
 
 protocol HomeViewModelType {
@@ -20,8 +20,10 @@ protocol HomeViewModelType {
 
 final class HomeViewModel: HomeViewModelOutputs, HomeViewModelType {
     
-    var cityTemperature: BehaviorRelay<Temperature> = BehaviorRelay(value: Temperature(city: "", time: "", weather: "", temperature: 0, maximumTemperature: 0, minimumTemperature: 0))
+    var cityTemperature: BehaviorRelay<[Temperature]> = BehaviorRelay(value: [])
     var outputs: HomeViewModelOutputs { return self }
     
-    init() {}
+    init() {
+        self.cityTemperature.accept(Temperature.dummy())
+    }
 }

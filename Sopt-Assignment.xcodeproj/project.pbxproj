@@ -12,6 +12,7 @@
 		098097542ADC3ADD00007587 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0980974F2ADC3ADC00007587 /* SF-Pro-Display-Light.otf */; };
 		098097552ADC3ADD00007587 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 098097502ADC3ADD00007587 /* SF-Pro-Display-Regular.otf */; };
 		098097562ADC3ADD00007587 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 098097512ADC3ADD00007587 /* SF-Pro-Display-Thin.otf */; };
+		0980975A2ADD70C600007587 /* HourlyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098097592ADD70C600007587 /* HourlyWeather.swift */; };
 		0994C7112ADACC7D0058A27B /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994C7102ADACC7D0058A27B /* FontLiterals.swift */; };
 		0994C7142ADACC960058A27B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994C7132ADACC960058A27B /* Protocol.swift */; };
 		0994C7172ADACCAA0058A27B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0994C7162ADACCAA0058A27B /* Extension.swift */; };
@@ -43,6 +44,7 @@
 		0980974F2ADC3ADC00007587 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		098097502ADC3ADD00007587 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		098097512ADC3ADD00007587 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		098097592ADD70C600007587 /* HourlyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyWeather.swift; sourceTree = "<group>"; };
 		0994C7102ADACC7D0058A27B /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		0994C7132ADACC960058A27B /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		0994C7162ADACCAA0058A27B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -82,6 +84,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		098097572ADD6EFF00007587 /* CityDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				098097582ADD6F1500007587 /* Models */,
+			);
+			path = CityDetailView;
+			sourceTree = "<group>";
+		};
+		098097582ADD6F1500007587 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				098097592ADD70C600007587 /* HourlyWeather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		0994C7082ADAC83F0058A27B /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				0994C71D2ADAE12A0058A27B /* Home */,
+				098097572ADD6EFF00007587 /* CityDetailView */,
 				09A7EEBE2AD05C640055937E /* ViewController.swift */,
 			);
 			path = Presentation;
@@ -164,48 +183,48 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		0994C7192ADAE0230058A27B /* ViewController */ = {
+		0994C7192ADAE0230058A27B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				0994C7312ADAE6810058A27B /* HomeViewController.swift */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		0994C71A2ADAE02B0058A27B /* ViewModel */ = {
+		0994C71A2ADAE02B0058A27B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				0994C71E2ADAE1420058A27B /* HomeViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		0994C71B2ADAE0310058A27B /* View */ = {
+		0994C71B2ADAE0310058A27B /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0994C7352ADBEF310058A27B /* HomeCityView.swift */,
 				0994C7372ADBF2F70058A27B /* HomeView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0994C71D2ADAE12A0058A27B /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0994C72D2ADAE2770058A27B /* Model */,
-				0994C71A2ADAE02B0058A27B /* ViewModel */,
-				0994C7192ADAE0230058A27B /* ViewController */,
-				0994C71B2ADAE0310058A27B /* View */,
+				0994C72D2ADAE2770058A27B /* Models */,
+				0994C71A2ADAE02B0058A27B /* ViewModels */,
+				0994C7192ADAE0230058A27B /* ViewControllers */,
+				0994C71B2ADAE0310058A27B /* Views */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		0994C72D2ADAE2770058A27B /* Model */ = {
+		0994C72D2ADAE2770058A27B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				0994C72F2ADAE2D00058A27B /* Temperature.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		09A7EEAE2AD05C640055937E = {
@@ -321,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0980975A2ADD70C600007587 /* HourlyWeather.swift in Sources */,
 				0994C7112ADACC7D0058A27B /* FontLiterals.swift in Sources */,
 				09A7EEBF2AD05C640055937E /* ViewController.swift in Sources */,
 				0994C7302ADAE2D00058A27B /* Temperature.swift in Sources */,
