@@ -12,7 +12,7 @@ import Then
 
 final class HourlyWeatherView: UIView {
     private let descriptionLabel = UILabel()
-    private let lineLabel = UILabel()
+    private let divisionLabel = UILabel()
     private let hourlyWeatherScrollView = UIScrollView()
     private lazy var hourlyWeatherStackView = UIStackView()
     private let timeView1 = ParticularHourWeatherView()
@@ -62,8 +62,8 @@ extension HourlyWeatherView {
             $0.numberOfLines = 2
         }
         
-        lineLabel.do {
-            $0.backgroundColor = .white
+        divisionLabel.do {
+            $0.backgroundColor = .white.withAlphaComponent(0.4)
         }
         
         hourlyWeatherScrollView.do {
@@ -83,7 +83,7 @@ extension HourlyWeatherView {
     }
     
     private func setLayout() {
-        self.addSubviews(descriptionLabel, lineLabel, hourlyWeatherScrollView)
+        self.addSubviews(descriptionLabel, divisionLabel, hourlyWeatherScrollView)
         hourlyWeatherScrollView.addSubview(hourlyWeatherStackView)
         
         descriptionLabel.snp.makeConstraints {
@@ -91,7 +91,7 @@ extension HourlyWeatherView {
             $0.horizontalEdges.equalToSuperview().inset(15)
         }
         
-        lineLabel.snp.makeConstraints {
+        divisionLabel.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().inset(14)
             $0.trailing.equalToSuperview()
@@ -99,7 +99,7 @@ extension HourlyWeatherView {
         }
         
         hourlyWeatherScrollView.snp.makeConstraints {
-            $0.top.equalTo(lineLabel.snp.top)
+            $0.top.equalTo(divisionLabel.snp.top)
             $0.horizontalEdges.bottom.equalToSuperview()
             $0.height.equalTo(115)
         }

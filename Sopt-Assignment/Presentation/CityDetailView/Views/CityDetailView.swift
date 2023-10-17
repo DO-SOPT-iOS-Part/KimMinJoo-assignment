@@ -15,7 +15,7 @@ final class CityDetailView: UIView {
     private let cityDetailScrollView = UIScrollView()
     private let cityTemperatureView = CityTemperatureView()
     private let hourlyWeatherView = HourlyWeatherView()
-    
+    let bottonMenuView = BottomMenuView()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setStyle()
@@ -41,7 +41,7 @@ extension CityDetailView {
     }
     
     private func setLayout() {
-        self.addSubviews(backgroundImageView,cityDetailScrollView)
+        self.addSubviews(backgroundImageView, cityDetailScrollView, bottonMenuView)
         cityDetailScrollView.addSubviews(cityTemperatureView, hourlyWeatherView)
         
         backgroundImageView.snp.makeConstraints {
@@ -50,6 +50,12 @@ extension CityDetailView {
         
         cityDetailScrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        bottonMenuView.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(50)
         }
         
         cityTemperatureView.snp.makeConstraints {

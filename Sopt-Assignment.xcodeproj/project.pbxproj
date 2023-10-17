@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		095DC09E2ADEACE400C6D50B /* BottomMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DC09D2ADEACE400C6D50B /* BottomMenuView.swift */; };
 		098097522ADC3ADD00007587 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0980974D2ADC3ADC00007587 /* SF-Pro-Display-Medium.otf */; };
 		098097532ADC3ADD00007587 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0980974E2ADC3ADC00007587 /* SF-Pro-Display-Bold.otf */; };
 		098097542ADC3ADD00007587 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0980974F2ADC3ADC00007587 /* SF-Pro-Display-Light.otf */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		095DC09D2ADEACE400C6D50B /* BottomMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuView.swift; sourceTree = "<group>"; };
 		0980974D2ADC3ADC00007587 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
 		0980974E2ADC3ADC00007587 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		0980974F2ADC3ADC00007587 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				098097642ADD7AF800007587 /* CityTemperatureView.swift */,
 				098097662ADD7B0A00007587 /* HourlyWeatherView.swift */,
 				0980976A2ADD867100007587 /* ParticularHourWeatherView.swift */,
+				095DC09D2ADEACE400C6D50B /* BottomMenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				0994C73A2ADBF4C60058A27B /* UIView+.swift in Sources */,
 				098097602ADD79EE00007587 /* CityDetailViewController.swift in Sources */,
 				09A7EEBD2AD05C640055937E /* SceneDelegate.swift in Sources */,
+				095DC09E2ADEACE400C6D50B /* BottomMenuView.swift in Sources */,
 				098097632ADD7A0800007587 /* CityDetailView.swift in Sources */,
 				0994C7142ADACC960058A27B /* Protocol.swift in Sources */,
 			);

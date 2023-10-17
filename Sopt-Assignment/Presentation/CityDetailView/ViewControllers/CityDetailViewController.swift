@@ -29,6 +29,10 @@ final class CityDetailViewController: UIViewController {
     override func loadView() {
         self.view = cityDetailView
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
 extension CityDetailViewController {
@@ -46,6 +50,15 @@ extension CityDetailViewController {
                 guard let self else { return }
                 cityDetailView.setHourlyWeatherView(hourlyWeather: hourlyWeather)
                 
+            }
+            .disposed(by: disposeBag)
+        
+        cityDetailView.bottonMenuView.listButton.rx.tap
+            .bind { [weak self] in
+                guard let self else { return }
+                if let navigationController = self.navigationController {
+                    navigationController.popViewController(animated: true)
+                }
             }
             .disposed(by: disposeBag)
     }
