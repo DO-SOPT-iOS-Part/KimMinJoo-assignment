@@ -66,14 +66,13 @@ extension HomeViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
 
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "ellipsisCircle"), style: .plain, target: self, action: Selector(""))
         self.navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     private func bindViewModel() {
         tapGesture1.rx.event
-            .bind { text in
+            .bind {_ in
                 self.pushToCityDetailView(index: 0)
             }
             .disposed(by: disposeBag)
