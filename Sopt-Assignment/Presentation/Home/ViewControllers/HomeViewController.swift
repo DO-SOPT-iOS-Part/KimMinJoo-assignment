@@ -52,8 +52,8 @@ extension HomeViewController {
                 button.tintColor = .gray152
             }
         }
-        
         self.navigationItem.searchController = searchController
+        self.navigationItem.searchController?.obscuresBackgroundDuringPresentation = true
         self.navigationItem.searchController?.searchBar.searchTextField.textColor = .white
         self.navigationItem.title = "Weather"
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]

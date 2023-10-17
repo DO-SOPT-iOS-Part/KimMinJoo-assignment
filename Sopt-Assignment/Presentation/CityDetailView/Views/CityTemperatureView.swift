@@ -26,40 +26,35 @@ final class CityTemperatureView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 extension CityTemperatureView {
     private func setStyle() { 
         cityLabel.do {
-            $0.font = .regular(size: 37)
+            $0.font = .regular(size: 32)
             $0.textColor = .white
-            $0.text = "의정부시"
         }
         
         temperatureLabel.do {
-            $0.font = .thin(size: 102)
+            $0.font = .thin(size: 100)
             $0.textColor = .white
-            $0.text = "21"
         }
         
         weatherLabel.do {
-            $0.font = .regular(size: 24)
+            $0.font = .regular(size: 18)
             $0.textColor = .white
-            $0.text = "흐림"
         }
         
         maxMinLabel.do {
-            $0.font = .medium(size: 21)
+            $0.font = .medium(size: 18)
             $0.textColor = .white
-            $0.text = "H: 32 L: 3"
         }
     }
     private func setLayout() { 
         self.addSubviews(cityLabel, temperatureLabel, weatherLabel, maxMinLabel)
         
         cityLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(78)
+            $0.top.equalToSuperview().inset(85)
             $0.centerX.equalToSuperview()
         }
         
@@ -69,7 +64,7 @@ extension CityTemperatureView {
         }
         
         weatherLabel.snp.makeConstraints {
-            $0.top.equalTo(temperatureLabel.snp.bottom)
+            $0.top.equalTo(temperatureLabel.snp.bottom).inset(5)
             $0.centerX.equalToSuperview()
         }
         

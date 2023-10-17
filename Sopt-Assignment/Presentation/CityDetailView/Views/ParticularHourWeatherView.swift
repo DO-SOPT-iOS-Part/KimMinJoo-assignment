@@ -56,7 +56,7 @@ extension ParticularHourWeatherView {
         
         weatherImageView.snp.makeConstraints {
             $0.top.equalTo(timeLabel.snp.bottom).offset(12)
-            $0.height.equalTo(24)
+            $0.height.equalTo(22)
             $0.centerX.equalToSuperview()
         }
         
