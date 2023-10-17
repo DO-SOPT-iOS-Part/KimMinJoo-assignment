@@ -46,7 +46,6 @@ final class HourlyWeatherView: UIView {
 extension HourlyWeatherView {
     private func setStyle() {
         self.layer.cornerRadius = 15
-        self.backgroundColor = .systemGray
         descriptionLabel.do {
             $0.text = StringLiterals.CityDetail.description
             $0.font = .medium(size: 14)
@@ -70,6 +69,12 @@ extension HourlyWeatherView {
             $0.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
             $0.isLayoutMarginsRelativeArrangement = true
             $0.spacing = 8
+        }
+        
+        timeViews.forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalToSuperview()
+            }
         }
     }
     

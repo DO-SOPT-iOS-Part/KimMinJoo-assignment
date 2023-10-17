@@ -28,7 +28,6 @@ final class ParticularHourWeatherView: UIView {
 
 extension ParticularHourWeatherView {
     private func setStyle() {
-        self.backgroundColor = .systemPink
         timeLabel.do {
             $0.font = .medium(size: 13)
             $0.textColor = .white

@@ -31,7 +31,6 @@ final class CityTemperatureView: UIView {
 
 extension CityTemperatureView {
     private func setStyle() { 
-        self.backgroundColor = .systemGreen
         cityLabel.do {
             $0.font = .regular(size: 37)
             $0.textColor = .white

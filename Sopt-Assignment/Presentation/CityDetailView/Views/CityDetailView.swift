@@ -34,7 +34,6 @@ extension CityDetailView {
         }
         
         cityDetailScrollView.do {
-            $0.backgroundColor = .systemYellow
             $0.contentInsetAdjustmentBehavior = .never
             $0.isScrollEnabled = true
         }
