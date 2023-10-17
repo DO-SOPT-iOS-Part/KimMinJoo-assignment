@@ -36,8 +36,8 @@ extension CityDetailView {
         cityDetailScrollView.do {
             $0.contentInsetAdjustmentBehavior = .never
             $0.isScrollEnabled = true
+            $0.alwaysBounceVertical = true
         }
-        
     }
     
     private func setLayout() {

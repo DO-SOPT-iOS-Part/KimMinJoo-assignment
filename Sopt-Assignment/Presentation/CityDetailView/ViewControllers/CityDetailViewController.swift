@@ -33,6 +33,10 @@ final class CityDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
     }
+    
+    deinit {
+        print(#function)
+    }
 }
 
 extension CityDetailViewController {
@@ -44,12 +48,12 @@ extension CityDetailViewController {
                 cityDetailView.setCityTemperatureView(temperature: temperature)
             }
             .disposed(by: disposeBag)
+        
         viewModel.outputs.hourlyWeather
             .asDriver()
             .drive { [weak self] hourlyWeather in
                 guard let self else { return }
                 cityDetailView.setHourlyWeatherView(hourlyWeather: hourlyWeather)
-                
             }
             .disposed(by: disposeBag)
         

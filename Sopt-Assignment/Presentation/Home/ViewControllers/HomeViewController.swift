@@ -35,6 +35,10 @@ final class HomeViewController: UIViewController {
     override func loadView() {
         self.view = homeView
     }
+    
+    deinit {
+        print(#function)
+    }
 }
 
 extension HomeViewController {
@@ -52,6 +56,7 @@ extension HomeViewController {
                 button.tintColor = .gray152
             }
         }
+        
         self.navigationItem.searchController = searchController
         self.navigationItem.searchController?.obscuresBackgroundDuringPresentation = true
         self.navigationItem.searchController?.searchBar.searchTextField.textColor = .white
