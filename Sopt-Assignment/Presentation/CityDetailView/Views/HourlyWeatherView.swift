@@ -14,7 +14,7 @@ final class HourlyWeatherView: UIView {
     private let descriptionLabel = UILabel()
     private let lineLabel = UILabel()
     private let hourlyWeatherScrollView = UIScrollView()
-    private lazy var hourlyWeatherStackView = UIStackView.init(arrangedSubviews: [self.timeView1, self.timeView2, self.timeView3, self.timeView4, self.timeView5, self.timeView6, self.timeView7, self.timeView8, self.timeView9, self.timeView10, self.timeView11, self.timeView12])
+    private lazy var hourlyWeatherStackView = UIStackView()
     private let timeView1 = ParticularHourWeatherView()
     private let timeView2 = ParticularHourWeatherView()
     private let timeView3 = ParticularHourWeatherView()
@@ -28,8 +28,12 @@ final class HourlyWeatherView: UIView {
     private let timeView11 = ParticularHourWeatherView()
     private let timeView12 = ParticularHourWeatherView()
     
+    private lazy var timeViews: [ParticularHourWeatherView] = [timeView1, timeView2, timeView3, timeView4, timeView5, timeView6, timeView7, timeView8, timeView9, timeView10, timeView11, timeView12]
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        setStackView()
         setStyle()
         setLayout()
     }
@@ -61,16 +65,17 @@ extension HourlyWeatherView {
         
         hourlyWeatherStackView.do {
             $0.axis = .horizontal
+            $0.alignment = .top
             $0.distribution = .fillEqually
-            $0.spacing = 16
+            $0.layoutMargins = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+            $0.isLayoutMarginsRelativeArrangement = true
+            $0.spacing = 8
         }
     }
     
     private func setLayout() {
         self.addSubviews(descriptionLabel, lineLabel, hourlyWeatherScrollView)
         hourlyWeatherScrollView.addSubview(hourlyWeatherStackView)
-        hourlyWeatherStackView.addArrangedSubviews(self.timeView1, self.timeView2, self.timeView3, self.timeView4, self.timeView5, self.timeView6, self.timeView7, self.timeView8, self.timeView9, self.timeView10, self.timeView11, self.timeView12)
-        
         descriptionLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.horizontalEdges.equalToSuperview().inset(15)
@@ -85,31 +90,31 @@ extension HourlyWeatherView {
         
         hourlyWeatherScrollView.snp.makeConstraints {
             $0.top.equalTo(lineLabel.snp.top)
-            $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.horizontalEdges.bottom.equalToSuperview()
+            $0.height.equalTo(115)
         }
         
         hourlyWeatherStackView.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview()
-            $0.width.equalToSuperview().inset(20)
-            $0.centerX.equalToSuperview()
+            $0.edges.height.equalToSuperview()
+        }
+    }
+    
+    func setStackView() {
+        self.timeViews.forEach {
+            var view = UIView()
+            view = $0
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            self.hourlyWeatherStackView.addArrangedSubview(view)
         }
     }
 }
 
 extension HourlyWeatherView {
     func setParticularView(hourlyWeather: [HourlyWeather]) {
-        timeView1.setLabels(hourlyWeather: hourlyWeather[0])
-        timeView2.setLabels(hourlyWeather: hourlyWeather[1])
-        timeView3.setLabels(hourlyWeather: hourlyWeather[2])
-        timeView4.setLabels(hourlyWeather: hourlyWeather[3])
-        timeView5.setLabels(hourlyWeather: hourlyWeather[4])
-        timeView6.setLabels(hourlyWeather: hourlyWeather[5])
-        timeView7.setLabels(hourlyWeather: hourlyWeather[6])
-        timeView8.setLabels(hourlyWeather: hourlyWeather[7])
-        timeView9.setLabels(hourlyWeather: hourlyWeather[8])
-        timeView10.setLabels(hourlyWeather: hourlyWeather[9])
-        timeView11.setLabels(hourlyWeather: hourlyWeather[10])
-        timeView12.setLabels(hourlyWeather: hourlyWeather[11])
+        var index = 0
+        self.timeViews.forEach {
+            $0.setLabels(hourlyWeather: hourlyWeather[index])
+        }
     }
 }

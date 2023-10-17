@@ -28,18 +28,23 @@ final class ParticularHourWeatherView: UIView {
 
 extension ParticularHourWeatherView {
     private func setStyle() {
+        self.backgroundColor = .systemPink
         timeLabel.do {
-            $0.font = .medium(size: 17)
+            $0.font = .medium(size: 13)
             $0.textColor = .white
+            $0.text = HourlyWeather.dummy().last?.time
         }
         
         weatherImageView.do {
             $0.tintColor = .white
+            $0.contentMode = .scaleAspectFit
+            $0.image = HourlyWeather.dummy().last?.weather
         }
         
         temperatureLabel.do {
-            $0.font = .medium(size: 22)
+            $0.font = .medium(size: 18)
             $0.textColor = .white
+            $0.text = "10"
         }
     }
     
@@ -51,14 +56,13 @@ extension ParticularHourWeatherView {
         }
         
         weatherImageView.snp.makeConstraints {
-            $0.top.equalTo(timeLabel.snp.bottom).offset(24)
-            $0.width.equalTo(30)
-            $0.height.equalTo(26)
+            $0.top.equalTo(timeLabel.snp.bottom).offset(12)
+            $0.height.equalTo(24)
             $0.centerX.equalToSuperview()
         }
         
         temperatureLabel.snp.makeConstraints {
-            $0.top.equalTo(weatherImageView.snp.bottom).offset(24)
+            $0.top.equalTo(weatherImageView.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
         }
     }

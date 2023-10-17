@@ -64,7 +64,7 @@ extension CityDetailView {
             $0.top.equalTo(cityTemperatureView.snp.bottom).offset(44)
             $0.width.equalToSuperview().inset(20)
             $0.centerX.equalToSuperview()
-            $0.height.equalTo(212)
+            $0.height.equalTo(170)
         }
     }
 }
