@@ -32,7 +32,6 @@ final class HourlyWeatherView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setStackView()
         setStyle()
         setLayout()
@@ -44,8 +43,18 @@ final class HourlyWeatherView: UIView {
 }
 
 extension HourlyWeatherView {
+    private func setStackView() {
+        self.timeViews.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            self.hourlyWeatherStackView.addArrangedSubview($0)
+        }
+    }
+    
     private func setStyle() {
+        self.backgroundColor = .darkNavy.withAlphaComponent(0.5)
         self.layer.cornerRadius = 15
+        
         descriptionLabel.do {
             $0.text = StringLiterals.CityDetail.description
             $0.font = .medium(size: 14)
@@ -60,6 +69,7 @@ extension HourlyWeatherView {
         hourlyWeatherScrollView.do {
             $0.contentInsetAdjustmentBehavior = .never
             $0.isScrollEnabled = true
+            $0.showsHorizontalScrollIndicator = false
         }
         
         hourlyWeatherStackView.do {
@@ -70,17 +80,12 @@ extension HourlyWeatherView {
             $0.isLayoutMarginsRelativeArrangement = true
             $0.spacing = 8
         }
-        
-        timeViews.forEach {
-            $0.snp.makeConstraints {
-                $0.height.equalToSuperview()
-            }
-        }
     }
     
     private func setLayout() {
         self.addSubviews(descriptionLabel, lineLabel, hourlyWeatherScrollView)
         hourlyWeatherScrollView.addSubview(hourlyWeatherStackView)
+        
         descriptionLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(10)
             $0.horizontalEdges.equalToSuperview().inset(15)
@@ -102,15 +107,11 @@ extension HourlyWeatherView {
         hourlyWeatherStackView.snp.makeConstraints {
             $0.edges.height.equalToSuperview()
         }
-    }
-    
-    func setStackView() {
-        self.timeViews.forEach {
-            var view = UIView()
-            view = $0
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.widthAnchor.constraint(equalToConstant: 50).isActive = true
-            self.hourlyWeatherStackView.addArrangedSubview(view)
+        
+        timeViews.forEach {
+            $0.snp.makeConstraints {
+                $0.height.equalToSuperview()
+            }
         }
     }
 }
@@ -120,6 +121,7 @@ extension HourlyWeatherView {
         var index = 0
         self.timeViews.forEach {
             $0.setLabels(hourlyWeather: hourlyWeather[index])
+            index += 1
         }
     }
 }
