@@ -79,3 +79,12 @@ extension CityTemperatureView {
         }
     }
 }
+
+extension CityTemperatureView {
+    func setLabels(temperature: Temperature) {
+        cityLabel.text = temperature.city
+        temperatureLabel.text = "\(temperature.temperature)º"
+        weatherLabel.text = temperature.weather
+        maxMinLabel.text = "H: \(temperature.maximumTemperature)º  L: \(temperature.minimumTemperature)º"
+    }
+}

@@ -12,15 +12,10 @@ import RxSwift
 import Then
 
 final class CityDetailViewController: UIViewController {
-    private let viewModel = CityDetailViewModel(city: "")
+    private var viewModel = CityDetailViewModel(index: 0)
     private let disposeBag = DisposeBag()
     
     private let cityDetailView = CityDetailView()
-    
-    private var cityIndex = 0
-    private let tapGesture1 = UITapGestureRecognizer()
-    private let tapGesture2 = UITapGestureRecognizer()
-    private let tapGesture3 = UITapGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +23,7 @@ final class CityDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true // 뷰 컨트롤러가 나타날 때 숨기기
+        navigationController?.isNavigationBarHidden = true
     }
     
     override func loadView() {
@@ -42,15 +37,22 @@ extension CityDetailViewController {
             .asDriver()
             .drive { [weak self] temperature in
                 guard let self else { return }
-//                self.homeView.setHomeCityView(temperatures: temperature)
+                cityDetailView.setCityTemperatureView(temperature: temperature)
+            }
+            .disposed(by: disposeBag)
+        viewModel.outputs.hourlyWeather
+            .asDriver()
+            .drive { [weak self] hourlyWeather in
+                guard let self else { return }
+                cityDetailView.setHourlyWeatherView(hourlyWeather: hourlyWeather)
+                
             }
             .disposed(by: disposeBag)
     }
-   
 }
 
 extension CityDetailViewController {
     func setIndex(index: Int) {
-        self.cityIndex = index
+        self.viewModel = CityDetailViewModel(index: index)
     }
 }

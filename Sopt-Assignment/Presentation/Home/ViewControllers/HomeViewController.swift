@@ -12,7 +12,6 @@ import RxSwift
 import Then
 
 final class HomeViewController: UIViewController {
-    
     private let viewModel = HomeViewModel()
     private let disposeBag = DisposeBag()
     

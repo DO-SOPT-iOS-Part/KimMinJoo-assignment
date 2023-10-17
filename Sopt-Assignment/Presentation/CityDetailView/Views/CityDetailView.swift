@@ -13,8 +13,8 @@ import Then
 final class CityDetailView: UIView {
     private let backgroundImageView = UIImageView()
     private let cityDetailScrollView = UIScrollView()
-    let cityTemperatureView = CityTemperatureView()
-    let hourlyWeatherView = HourlyWeatherView()
+    private let cityTemperatureView = CityTemperatureView()
+    private let hourlyWeatherView = HourlyWeatherView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,5 +71,9 @@ extension CityDetailView {
 extension CityDetailView {
     func setHourlyWeatherView(hourlyWeather: [HourlyWeather]) {
         hourlyWeatherView.setParticularView(hourlyWeather: hourlyWeather)
+    }
+    
+    func setCityTemperatureView(temperature: Temperature) {
+        cityTemperatureView.setLabels(temperature: temperature)
     }
 }

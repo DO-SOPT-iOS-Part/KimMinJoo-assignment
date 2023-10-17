@@ -29,8 +29,8 @@ final class CityDetailViewModel: CityDetailViewModelOutputs, CityDetailViewModel
     var hourlyWeather: BehaviorRelay<[HourlyWeather]> = BehaviorRelay(value: [])
     var outputs: CityDetailViewModelOutputs { return self }
     
-    init(city: String) {
-        let index = getCityTemperature(city: city)
+    init(index: Int) {
+//        let index = getCityTemperature(city: city)
         self.cityTemperature.accept(Temperature.dummy()[index])
         self.hourlyWeather.accept(HourlyWeather.dummy())
     }
