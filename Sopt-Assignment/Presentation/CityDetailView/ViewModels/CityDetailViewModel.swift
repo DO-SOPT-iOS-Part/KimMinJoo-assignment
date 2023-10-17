@@ -20,7 +20,7 @@ protocol CityDetailViewModelType {
 }
 
 final class CityDetailViewModel: CityDetailViewModelOutputs, CityDetailViewModelType {
-    var cityTemperature: BehaviorRelay<Temperature> = BehaviorRelay(value: Temperature(city: "", 
+    var cityTemperature: BehaviorRelay<Temperature> = BehaviorRelay(value: Temperature(city: "",
                                                                                        time: "",
                                                                                        weather: "",
                                                                                        temperature: 0,
@@ -30,7 +30,6 @@ final class CityDetailViewModel: CityDetailViewModelOutputs, CityDetailViewModel
     var outputs: CityDetailViewModelOutputs { return self }
     
     init(index: Int) {
-//        let index = getCityTemperature(city: city)
         self.cityTemperature.accept(Temperature.dummy()[index])
         self.hourlyWeather.accept(HourlyWeather.dummy())
     }
