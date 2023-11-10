@@ -45,6 +45,12 @@
 		09A7EEBD2AD05C640055937E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7EEBC2AD05C640055937E /* SceneDelegate.swift */; };
 		09A7EEC42AD05C650055937E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A7EEC32AD05C650055937E /* Assets.xcassets */; };
 		09A7EEC72AD05C650055937E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A7EEC52AD05C650055937E /* LaunchScreen.storyboard */; };
+		09C5F2232AFDBC4B00E7973B /* ParticularHourCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5F2222AFDBC4B00E7973B /* ParticularHourCollectionViewCell.swift */; };
+		09C5F2252AFDBCBA00E7973B /* ParticularDayWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5F2242AFDBCBA00E7973B /* ParticularDayWeatherCollectionViewCell.swift */; };
+		09C5F2272AFDBE3D00E7973B /* DailyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5F2262AFDBE3D00E7973B /* DailyWeather.swift */; };
+		09C5F22A2AFDC9D000E7973B /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 09C5F2292AFDC9D000E7973B /* RxDataSources */; };
+		09C5F22C2AFDE20900E7973B /* UITableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5F22B2AFDE20900E7973B /* UITableViewRegisterable.swift */; };
+		09C5F22E2AFDE22200E7973B /* UICollectionVIewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C5F22D2AFDE22200E7973B /* UICollectionVIewRegisterable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +90,11 @@
 		09A7EEC32AD05C650055937E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09A7EEC62AD05C650055937E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09A7EEC82AD05C650055937E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09C5F2222AFDBC4B00E7973B /* ParticularHourCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticularHourCollectionViewCell.swift; sourceTree = "<group>"; };
+		09C5F2242AFDBCBA00E7973B /* ParticularDayWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticularDayWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		09C5F2262AFDBE3D00E7973B /* DailyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeather.swift; sourceTree = "<group>"; };
+		09C5F22B2AFDE20900E7973B /* UITableViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewRegisterable.swift; sourceTree = "<group>"; };
+		09C5F22D2AFDE22200E7973B /* UICollectionVIewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionVIewRegisterable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +105,7 @@
 				0994C72C2ADAE20C0058A27B /* Then in Frameworks */,
 				0994C7272ADAE2010058A27B /* RxRelay in Frameworks */,
 				0994C7252ADAE2010058A27B /* RxCocoa in Frameworks */,
+				09C5F22A2AFDC9D000E7973B /* RxDataSources in Frameworks */,
 				0994C7292ADAE2010058A27B /* RxSwift in Frameworks */,
 				0994C7222ADAE1E60058A27B /* SnapKit in Frameworks */,
 			);
@@ -117,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				098097592ADD70C600007587 /* HourlyWeather.swift */,
+				09C5F2262AFDBE3D00E7973B /* DailyWeather.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,6 +158,8 @@
 				098097662ADD7B0A00007587 /* HourlyWeatherView.swift */,
 				0980976A2ADD867100007587 /* ParticularHourWeatherView.swift */,
 				095DC09D2ADEACE400C6D50B /* BottomMenuView.swift */,
+				09C5F2222AFDBC4B00E7973B /* ParticularHourCollectionViewCell.swift */,
+				09C5F2242AFDBCBA00E7973B /* ParticularDayWeatherCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				0994C7132ADACC960058A27B /* Protocol.swift */,
+				09C5F22B2AFDE20900E7973B /* UITableViewRegisterable.swift */,
+				09C5F22D2AFDE22200E7973B /* UICollectionVIewRegisterable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -326,6 +343,7 @@
 				0994C7262ADAE2010058A27B /* RxRelay */,
 				0994C7282ADAE2010058A27B /* RxSwift */,
 				0994C72B2ADAE20C0058A27B /* Then */,
+				09C5F2292AFDC9D000E7973B /* RxDataSources */,
 			);
 			productName = "Sopt-Assignment";
 			productReference = 09A7EEB72AD05C640055937E /* Sopt-Assignment.app */;
@@ -359,6 +377,7 @@
 				0994C7202ADAE1E60058A27B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0994C7232ADAE2010058A27B /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0994C72A2ADAE20C0058A27B /* XCRemoteSwiftPackageReference "Then" */,
+				09C5F2282AFDC9D000E7973B /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 09A7EEB82AD05C640055937E /* Products */;
 			projectDirPath = "";
@@ -398,6 +417,8 @@
 				0994C7302ADAE2D00058A27B /* Temperature.swift in Sources */,
 				0994C7342ADBE1000058A27B /* ColorLiterals.swift in Sources */,
 				0980976D2ADD887A00007587 /* StringLiterals.swift in Sources */,
+				09C5F2272AFDBE3D00E7973B /* DailyWeather.swift in Sources */,
+				09C5F22C2AFDE20900E7973B /* UITableViewRegisterable.swift in Sources */,
 				098097672ADD7B0A00007587 /* HourlyWeatherView.swift in Sources */,
 				0994C71F2ADAE1420058A27B /* HomeViewModel.swift in Sources */,
 				0994C7402ADC18EB0058A27B /* UIImage+.swift in Sources */,
@@ -407,10 +428,13 @@
 				0994C73C2ADC053B0058A27B /* UIStackView+.swift in Sources */,
 				0994C7322ADAE6810058A27B /* HomeViewController.swift in Sources */,
 				098802ED2AF39A2B003E572A /* HomeCityCollectionViewCell.swift in Sources */,
+				09C5F2232AFDBC4B00E7973B /* ParticularHourCollectionViewCell.swift in Sources */,
 				0980975D2ADD72DD00007587 /* CityDetailViewModel.swift in Sources */,
 				0994C7172ADACCAA0058A27B /* Extension.swift in Sources */,
 				0994C7382ADBF2F70058A27B /* HomeView.swift in Sources */,
+				09C5F22E2AFDE22200E7973B /* UICollectionVIewRegisterable.swift in Sources */,
 				0994C73A2ADBF4C60058A27B /* UIView+.swift in Sources */,
+				09C5F2252AFDBCBA00E7973B /* ParticularDayWeatherCollectionViewCell.swift in Sources */,
 				098097602ADD79EE00007587 /* CityDetailViewController.swift in Sources */,
 				09A7EEBD2AD05C640055937E /* SceneDelegate.swift in Sources */,
 				095DC09E2ADEACE400C6D50B /* BottomMenuView.swift in Sources */,
@@ -652,6 +676,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		09C5F2282AFDC9D000E7973B /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -679,6 +711,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0994C72A2ADAE20C0058A27B /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		09C5F2292AFDC9D000E7973B /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09C5F2282AFDC9D000E7973B /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

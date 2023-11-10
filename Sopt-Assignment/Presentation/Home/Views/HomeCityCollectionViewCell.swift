@@ -108,4 +108,3 @@ extension HomeCityCollectionViewCell {
         maxMinLabel.text = "H: \(temperature.maximumTemperature)º  L: \(temperature.minimumTemperature)º"
     }
 }
-

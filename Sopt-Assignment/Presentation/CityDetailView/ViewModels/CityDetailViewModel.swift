@@ -13,6 +13,7 @@ import RxSwift
 protocol CityDetailViewModelOutputs {
     var cityTemperature: BehaviorRelay<Temperature> { get }
     var hourlyWeather: BehaviorRelay<[HourlyWeather]> { get }
+    var dailyWeather: BehaviorRelay<[DailyWeather]> { get }
 }
 
 protocol CityDetailViewModelType {
@@ -28,23 +29,12 @@ final class CityDetailViewModel: CityDetailViewModelOutputs, CityDetailViewModel
                                                                                        maximumTemperature: 0,
                                                                                        minimumTemperature: 0))
     var hourlyWeather: BehaviorRelay<[HourlyWeather]> = BehaviorRelay(value: [])
+    var dailyWeather: BehaviorRelay<[DailyWeather]> = BehaviorRelay(value: [])
     var outputs: CityDetailViewModelOutputs { return self }
     
     init(index: Int) {
         self.cityTemperature.accept(Temperature.dummy()[index])
         self.hourlyWeather.accept(HourlyWeather.dummy())
-    }
-}
-
-extension CityDetailViewModel {
-    private func getCityTemperature(city: String) -> Int {
-        let temperature = Temperature.dummy()
-        var result = 0
-        temperature.forEach {
-            if($0.city == city) {
-                result += 1
-            }
-        }
-        return result
+        self.dailyWeather.accept(DailyWeather.dummy())
     }
 }

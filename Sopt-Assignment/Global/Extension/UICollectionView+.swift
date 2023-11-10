@@ -33,4 +33,3 @@ extension UICollectionView {
         return self.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: type.className, for: indexPath) as! T
     }
 }
-
