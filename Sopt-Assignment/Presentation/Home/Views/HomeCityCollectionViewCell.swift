@@ -1,8 +1,8 @@
 //
-//  HomeCityView.swift
+//  HomeCityCollectionViewCell.swift
 //  Sopt-Assignment
 //
-//  Created by Minjoo Kim on 10/15/23.
+//  Created by Minjoo Kim on 11/2/23.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class HomeCityView: UIView {
+final class HomeCityCollectionViewCell: UICollectionViewCell {
     private let imageView = UIImageView()
     private let locationLabel = UILabel()
     private let timeLabel = UILabel()
@@ -29,7 +29,7 @@ final class HomeCityView: UIView {
     }
 }
 
-extension HomeCityView {
+extension HomeCityCollectionViewCell {
     private func setStyle() {
         
         self.layer.cornerRadius = 16
@@ -99,7 +99,7 @@ extension HomeCityView {
     }
 }
 
-extension HomeCityView {
+extension HomeCityCollectionViewCell {
     func setLabels(temperature: Temperature) {
         locationLabel.text = temperature.city
         timeLabel.text = temperature.time

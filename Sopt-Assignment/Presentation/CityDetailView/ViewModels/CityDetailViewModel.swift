@@ -20,7 +20,8 @@ protocol CityDetailViewModelType {
 }
 
 final class CityDetailViewModel: CityDetailViewModelOutputs, CityDetailViewModelType {
-    var cityTemperature: BehaviorRelay<Temperature> = BehaviorRelay(value: Temperature(city: "",
+    var cityTemperature: BehaviorRelay<Temperature> = BehaviorRelay(value: Temperature(no: 0,
+                                                                                       city: "",
                                                                                        time: "",
                                                                                        weather: "",
                                                                                        temperature: 0,
