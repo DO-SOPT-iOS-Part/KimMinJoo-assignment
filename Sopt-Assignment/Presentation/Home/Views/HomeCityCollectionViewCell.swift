@@ -100,11 +100,12 @@ extension HomeCityCollectionViewCell {
 }
 
 extension HomeCityCollectionViewCell {
-    func setLabels(temperature: Temperature) {
-        locationLabel.text = temperature.city
-        timeLabel.text = temperature.time
-        weatherLabel.text = temperature.weather
-        temperatureLabel.text = "\(temperature.temperature)º"
-        maxMinLabel.text = "H: \(temperature.maximumTemperature)º  L: \(temperature.minimumTemperature)º"
+    func setLabels(temperature: TemperatureDTO) {
+        print(temperature, "🍀🍀🍀🍀🍀🍀🍀🍀")
+        locationLabel.text = temperature.name
+        timeLabel.text = "\(temperature.timezone)"
+        weatherLabel.text = "\(temperature.weather[0].main)"
+        temperatureLabel.text = "\(round((temperature.main.temp - 32) / 1.8))º"
+        maxMinLabel.text = "H: \(round((temperature.main.tempMax - 32) / 1.8))º  L: \(round((temperature.main.tempMin - 32) / 1.8))º"
     }
 }

@@ -26,7 +26,6 @@ final class HomeView: UIView {
 
 extension HomeView {
     private func setStyle() {
-        
         homeCityCollectionView.do {
             $0.backgroundColor = .black
             $0.contentInsetAdjustmentBehavior = .never
