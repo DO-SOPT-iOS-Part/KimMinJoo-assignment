@@ -29,6 +29,7 @@ final class BottomMenuView: UIView {
 
 extension BottomMenuView {
     private func setStyle() {
+        self.backgroundColor = .darkNavy
         divisionLabel.do {
             $0.backgroundColor = .white.withAlphaComponent(0.4)
         }
@@ -43,7 +44,6 @@ extension BottomMenuView {
         }
         
         pageControl.do {
-//            $0.backgroundColor = .systemPink
             $0.numberOfPages = 3
             $0.setIndicatorImage(ImageLiterals.Home.location, forPage: 0)
         }

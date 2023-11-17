@@ -10,12 +10,27 @@ import UIKit
 import SnapKit
 import Then
 
-final class CityTemperatureView: UICollectionReusableView {
+final class CityTemperatureView: UICollectionViewCell {
     
     private let cityLabel = UILabel()
     private let temperatureLabel = UILabel()
     private let weatherLabel = UILabel()
     private let maxMinLabel = UILabel()
+    
+    private let explainLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.font = .regular(size: 14)
+        return label
+    }()
+    
+    private let separatorLine: UIView =  {
+        let view = UIView()
+        view.backgroundColor = .systemGray2.withAlphaComponent(0.5)
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,7 +69,7 @@ extension CityTemperatureView {
         self.addSubviews(cityLabel, temperatureLabel, weatherLabel, maxMinLabel)
         
         cityLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(85)
+            $0.top.equalToSuperview().inset(38)
             $0.centerX.equalToSuperview()
         }
         
@@ -81,5 +96,30 @@ extension CityTemperatureView {
         temperatureLabel.text = "\(temperature.temperature)º"
         weatherLabel.text = temperature.weather
         maxMinLabel.text = "H: \(temperature.maximumTemperature)º  L: \(temperature.minimumTemperature)º"
+    }
+    
+    func configureExplainHeader(forText: String) {
+        let animation:CATransition = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            CAMediaTimingFunctionName.easeInEaseOut)
+        animation.type = CATransitionType.fade
+        animation.subtype = CATransitionSubtype.fromTop
+        explainLabel.text = forText
+        explainLabel.textColor = .white
+
+        animation.duration = 0.3
+        explainLabel.layer.add(animation, forKey: CATransitionType.fade.rawValue)
+        
+        separatorLine.isHidden = false
+    }
+    
+    func configureNormalHeader(forModel: WeatherDetailSectionHeaderModel?) {
+        let imageString = NSAttributedString(attachment: NSTextAttachment(image: forModel?.image ?? UIImage()))
+        let string = NSAttributedString(string: forModel?.title ?? "")
+        
+        explainLabel.labelWithImg(composition: imageString, string)
+        explainLabel.textColor = .systemGray2
+        
+        separatorLine.isHidden = true
     }
 }
