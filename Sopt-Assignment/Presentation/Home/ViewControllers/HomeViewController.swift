@@ -17,13 +17,9 @@ final class HomeViewController: UIViewController {
     
     private let homeView = HomeView()
     
-    private let tapGesture1 = UITapGestureRecognizer()
-    private let tapGesture2 = UITapGestureRecognizer()
-    private let tapGesture3 = UITapGestureRecognizer()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTapGesture()
+        setRegister()
         bindViewModel()
     }
     
@@ -71,43 +67,49 @@ extension HomeViewController {
     }
     
     private func bindViewModel() {
-        tapGesture1.rx.event
-            .bind {_ in
-                self.pushToCityDetailView(index: 0)
-            }
-            .disposed(by: disposeBag)
-        
-        tapGesture2.rx.event
-            .bind {_ in
-                self.pushToCityDetailView(index: 1)
-            }
-            .disposed(by: disposeBag)
-        
-        tapGesture3.rx.event
-            .bind {_ in
-                self.pushToCityDetailView(index: 2)
-            }
-            .disposed(by: disposeBag)
-        
         viewModel.outputs.cityTemperature
-            .asDriver()
-            .drive { [weak self] temperature in
-                guard let self else { return }
-                self.homeView.setHomeCityView(temperatures: temperature)
-            }
+            .bind(to: homeView.homeCityCollectionView.rx
+                .items(cellIdentifier: HomeCityCollectionViewCell.className, cellType: HomeCityCollectionViewCell.self)) { index, model, cell in
+                        cell.setLabels(temperature: model)
+                }
+                .disposed(by: disposeBag)
+        
+        homeView.homeCityCollectionView.rx.modelSelected(Temperature.self)
+            .subscribe(onNext: { model in
+                let index = model.no
+                self.pushToCityDetailView(index: index)
+            })
+            .disposed(by: disposeBag)
+        
+        homeView.homeCityCollectionView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
     
-    private func setTapGesture() {
-        homeView.homeCityView1.addGestureRecognizer(self.tapGesture1)
-        homeView.homeCityView2.addGestureRecognizer(self.tapGesture2)
-        homeView.homeCityView3.addGestureRecognizer(self.tapGesture3)
+    private func setRegister() {
+        homeView.homeCityCollectionView.registerCell(HomeCityCollectionViewCell.self)
     }
+    
+    private func setDelegate() {
+        homeView.homeCityCollectionView.delegate = self
+    }
+
     
     private func pushToCityDetailView(index: Int) {
         print(index)
         let cityDetailViewController = CityDetailViewController()
         cityDetailViewController.setIndex(index: index)
         self.navigationController?.pushViewController(cityDetailViewController, animated: true)
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = UIScreen.main.bounds.width
+        let height = 117.0
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
     }
 }

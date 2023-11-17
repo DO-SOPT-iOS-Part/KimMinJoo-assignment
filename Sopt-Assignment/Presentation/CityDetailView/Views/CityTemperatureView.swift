@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class CityTemperatureView: UIView {
+final class CityTemperatureView: UICollectionReusableView {
     
     private let cityLabel = UILabel()
     private let temperatureLabel = UILabel()

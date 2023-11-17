@@ -8,6 +8,7 @@
 import Foundation
 
 struct Temperature {
+    let no: Int
     let city: String
     let time: String
     let weather: String
@@ -18,19 +19,22 @@ struct Temperature {
 
 extension Temperature {
     static func dummy() -> [Temperature] {
-        return [Temperature(city: "My Location",
+        return [Temperature(no: 0,
+                            city: "My Location",
                             time: "서울특별시",
                             weather: "Mostly Clear",
                             temperature: 13,
                             maximumTemperature: 19,
                             minimumTemperature: 12),
-                Temperature(city: "Yongsan-gu",
+                Temperature(no: 1,
+                            city: "Yongsan-gu",
                             time: "11:59PM",
                             weather: "Mostly Clear",
                             temperature: 10,
                             maximumTemperature: 17,
                             minimumTemperature: 9),
-                Temperature(city: "Tokyo",
+                Temperature(no: 2,
+                            city: "Tokyo",
                             time: "11:59PM",
                             weather: "Cloudy",
                             temperature: 18,
