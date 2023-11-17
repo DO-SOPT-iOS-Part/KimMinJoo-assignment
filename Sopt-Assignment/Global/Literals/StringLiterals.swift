@@ -10,5 +10,6 @@ import Foundation
 struct StringLiterals {
     struct CityDetail {
         static let description = "Clear conditions tonight, continuing through the morning. Wind gusts are up to 3 m/s."
+        static let daily = "10-DAY FORECAST"
     }
 }

@@ -13,7 +13,7 @@ import Then
 
 @frozen
 enum Sections: CaseIterable {
-    case hourlyWeather, tenDaysForecast
+    case cityTemperature, hourlyWeather, tenDaysForecast
 }
 
 final class CityDetailViewController: UIViewController {
@@ -27,6 +27,7 @@ final class CityDetailViewController: UIViewController {
     private var temperatureData = Temperature(no: 0, city: "", time: "", weather: "", temperature: 0, maximumTemperature: 0, minimumTemperature: 0)
     private var hourlyData: [HourlyWeather] = []
     private var dailyData: [DailyWeather] = []
+    private var minMaxTemp: (Int, Int) = (0, 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +95,14 @@ extension CityDetailViewController {
             }
             .disposed(by: disposeBag)
         
+        viewModel.outputs.minMaxTemp
+            .asDriver()
+            .drive {
+                print($0)
+                self.minMaxTemp = $0
+            }
+            .disposed(by: disposeBag)
+        
 //        viewModel.outputs.cityTemperature
 //            .bind(to: cityDetailView.cityDetailCollectionView.rx
 //                .items(cellIdentifier: ParticularDayCollectionViewCell.className, cellType: ParticularDayCollectionViewCell.self)) { index, model, cell in
@@ -109,7 +118,10 @@ extension CityDetailViewController {
     }
     
     private func setRegister() {
-        cityDetailView.cityDetailCollectionView.registerHeader(CityTemperatureView.self)
+        cityDetailView.cityDetailCollectionView.registerHeader(HourlyHeaderView.self)
+        cityDetailView.cityDetailCollectionView.registerHeader(DailyHeaderView.self)
+        
+        cityDetailView.cityDetailCollectionView.registerCell(CityTemperatureView.self)
         cityDetailView.cityDetailCollectionView.registerCell(ParticularHourCollectionViewCell.self)
         cityDetailView.cityDetailCollectionView.registerCell(ParticularDayCollectionViewCell.self)
     }
@@ -128,9 +140,15 @@ extension CityDetailViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: height)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 16
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 0, left: 0, bottom: 1000, right: 0)
+//    }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 82)
@@ -145,18 +163,22 @@ extension CityDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sectionType = SectionType.allCases[section]
         switch sectionType {
+        case .cityTemperature:
+            return 1
         case .hourlyWeather:
             return hourlyData.count
         case .tenDaysForecast:
-            print("\(dailyData.count)########################")
             return dailyData.count
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sectionType = SectionType.allCases[indexPath.section]
         switch sectionType {
+        case .cityTemperature:
+            let cell = collectionView.dequeueCell(type: CityTemperatureView.self, indexPath: indexPath)
+            cell.setLabels(temperature: temperatureData)
+            return cell
         case .hourlyWeather:
             let cell = collectionView.dequeueCell(type: ParticularHourCollectionViewCell.self, indexPath: indexPath)
             cell.setLabels(hourlyWeather: hourlyData[indexPath.item])
@@ -164,14 +186,22 @@ extension CityDetailViewController: UICollectionViewDataSource {
         case .tenDaysForecast:
             let cell = collectionView.dequeueCell(type: ParticularDayCollectionViewCell.self, indexPath: indexPath)
             cell.setLabels(dailyWeather: dailyData[indexPath.item])
+            cell.setGradientView(model: dailyData[indexPath.row], lowestTemp: minMaxTemp.0, nowTemp: dailyData[indexPath.row].maxTemperature, highestTemp: minMaxTemp.1)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = cityDetailView.cityDetailCollectionView.dequeueReusableCell(kind: UICollectionView.elementKindSectionHeader, type: CityTemperatureView.self, indexPath: indexPath)
-        view.setLabels(temperature: temperatureData)
-        return view
+        let sectionType = SectionType.allCases[indexPath.section]
+        switch sectionType {
+        case .cityTemperature:
+            return UICollectionReusableView()
+        case .hourlyWeather:
+            let view = HourlyHeaderView.dequeueReusableHeaderView(collectionView: collectionView, indexPath: indexPath)
+            return view
+        case .tenDaysForecast:
+            let view = DailyHeaderView.dequeueReusableHeaderView(collectionView: collectionView, indexPath: indexPath)
+            return view
+        }
     }
-    
 }
