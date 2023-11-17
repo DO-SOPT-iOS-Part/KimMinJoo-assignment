@@ -35,11 +35,15 @@ final class CityDetailViewModel: CityDetailViewModelOutputs, CityDetailViewModel
     
     var outputs: CityDetailViewModelOutputs { return self }
     
+    private let city: [String] = ["seoul", "yongsan", "tokyo", "busan", "jeju"]
+    private var detailDTO: [DetailDTO?] = []
+    
     init(index: Int) {
         self.cityTemperature.accept(Temperature.dummy()[index])
         self.hourlyWeather.accept(HourlyWeather.dummy())
         self.dailyWeather.accept(DailyWeather.dummy())
         self.minMaxTemp.accept(setMinMaxTemp(model: dailyWeather.value))
+        getDetailAPI()
     }
 }
 
@@ -58,4 +62,28 @@ extension CityDetailViewModel {
         }
         return (min, max)
     }
+    
+    func getDetailAPI() {
+            Task {
+                do {
+                    for i in city {
+                        let result = try await WeatherService.shared.getDetailWeather(city: i)
+                        detailDTO.append(result)
+                    }
+                    DispatchQueue.main.async {   
+                        print("sss")
+//                        self.collectionView.reloadData()
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    func makeTimeZoneToTime(timeZone: Int) -> String {
+          let today = Date()
+          let dateFormatter = DateFormatter()
+          dateFormatter.timeZone = TimeZone(secondsFromGMT: timeZone)
+          dateFormatter.dateFormat = "HHmm"
+          return dateFormatter.string(from: today)
+      }
 }
